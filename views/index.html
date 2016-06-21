@@ -1,0 +1,98 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Watches an E-Commerce online Shopping </title>
+	<link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
+	
+	<!-- Custom Theme files -->
+	<link href="../css/style.css" rel='stylesheet' type='text/css' />
+	<link href="../css/fonts.css" rel='stylesheet' type='text/css' />
+	<link href="../css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="../css/custom.css" rel='stylesheet' type='text/css' />
+	<link href="../css/component.css" rel='stylesheet' type='text/css' />
+	
+	<!-- start menu -->
+</head>
+<body ng-app = "watchApp" ng-controller = "userCtrl">
+	 
+	 <div class="banner bannerClass">
+   	  <div class="container">
+   	  	<div class="header_top">
+   	  	   <div class="header_top_left">
+	  	      <div class="box_11"><a href="checkout.html">
+		      <h4><p>Cart: <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</p><img src="images/bag.png" alt=""/><div class="clearfix"> </div></h4>
+		      </a></div>
+	          <p class="empty"><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+	          <div class="clearfix"> </div>
+	       </div>
+           <div class="header_top_right">
+		  	 
+			 <ul class="header_user_info">
+			  <a class="login" href="/home/#login">
+				<i class="user"> </i> 
+				<li class="user_desc">{{userName}}</li>
+			  </a>
+			  <div class="clearfix"> </div>
+		     </ul>
+		    	<!----//search-scripts---->
+		            <div class="clearfix"> </div>
+			 </div>
+		     <div class="clearfix"> </div>
+	      </div>
+	   	  <div class="header_bottom">
+		   <div class="logo">
+			  <h1><a href="/home/#/"><span class="m_1">W</span>atches</a></h1>
+		   </div>
+		   <div class="menu">
+		     <ul class="megamenu skyblue">
+				<li><a class="color2" href="/home/#men">Mens</a>
+				
+				</li>
+				<li><a class="color4" href="/home/#women">womens</a>
+				</li>				
+				<li><a class="color10" href="/home/#brands">Brands</a></li>
+				
+				<div class="clearfix"> </div>	
+				</ul>
+			</div>
+		        <div class="clearfix"> </div>
+		    </div>
+	   </div>
+   </div>
+    <!-- ng view -->
+	<div ng-view></div>
+	<!-- ng view -->
+	<div class="footer">
+   	 <div class="container">
+   	 	<div class="cssmenu">
+		   <ul>
+			<li class="active"><a href="#">Privacy</a></li>
+			<li><a href="#">Terms</a></li>
+			<li><a href="#">Shop</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="contact.html">Contact</a></li>
+		  </ul>
+		</div>
+		<ul class="social">
+			<li><a href=""> <i class="instagram"> </i> </a></li>
+			<li><a href=""><i class="fb"> </i> </a></li>
+			<li><a href=""><i class="tw"> </i> </a></li>
+	    </ul>
+	    <div class="clearfix"></div>
+	    
+   	 </div>
+   </div>
+   <script   src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
+   <script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+   <script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.js"></script>
+   <!--<script type="text/javascript" src="../utility/coreFunc.js"></script>
+      <script type="text/javascript" src="../js/config.js"></script>
+         <script type="text/javascript" src="../js/loginCtrl.js"></script>
+            <script type="text/javascript" src="../js/shoppingCtrl.js"></script>
+               <script type="text/javascript" src="../js/userCtrl.js"></script> -->
+
+   <script type="text/javascript" src="../dist/all.js"></script>
+   
+</body>
+</html>		

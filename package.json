@@ -1,0 +1,38 @@
+{
+  "name": "watch",
+  "version": "1.0.0",
+  "description": "Watch E-Commerce",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "angular",
+    "watch"
+  ],
+  "author": "aaa",
+  "license": "ISC",
+  "dependencies": {
+    "angular-mocks": "^1.5.7",
+    "angular-route": "^1.5.7",
+    "express": "^4.13.4",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-jslint": "^1.0.1",
+    "gulp-jslint-simple": "^1.0.2",
+    "jasmine-core": "^2.4.1",
+    "jquery": "^3.0.0",
+    "jshint-stylish": "^2.2.0",
+    "karma": "^0.13.22",
+    "karma-cli": "^1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "mongoose": "^4.4.20",
+    "pug": "^2.0.0-beta2"
+  },
+  "devDependencies": {
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-html-reporter": "^0.2.7"
+  }
+}

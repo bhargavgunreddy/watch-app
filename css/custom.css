@@ -1,0 +1,11 @@
+
+.notification{
+	padding: 8px;
+    padding-top: 15px;
+    margin: 1px;
+    color: orangered;
+}
+
+li.cat-item {
+	cursor: pointer;
+}

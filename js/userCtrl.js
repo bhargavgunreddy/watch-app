@@ -12,6 +12,32 @@ watchApp.controller('userCtrl', function UserController($scope, sharingService, 
   });
 
 
+  $rootScope.$on('startUserSession', function (event, arg) { 
+    $scope.sessionStarted = true;
+    this.startSessionCounter();
+    $scope.sessionUserData = arg[0];
+    $scope.sessionUserName = $scope.sessionUserData.uname;
+    console.log("starting session for -->", arg);
+  });
+
+  $scope.endSession = function(){
+    $scope.sessionStarted = false;
+    //this.startSessionCounter();
+    $scope.sessionUserData = null;
+  }
+
+
+  $scope.startSessionCounter = function(){
+      var counter = 1000;
+      setTimeout(function(){
+        if(counter > 0)
+          counter -= 1;
+        else
+          $scope.endSession();
+        
+      }, 1000);
+  }
+
   $scope.$on("changeUser", function(event, args){
     console.log(args, "<-keys-");
   

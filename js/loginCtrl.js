@@ -6,51 +6,38 @@ watchApp.controller('loginCtrl', function PhoneListController($scope, sharingSer
 
 
 	$scope.handleClick = function(param){
-
-	 
-	        $http({
-			  method: 'GET',
-			  url: '/api/getWatches/'+ param
-			}).then(function successCallback(response) {
-
-				$scope.resp = response;
-			}, function errorCallback(response) {
-			    // called asynchronously if an error occurs
-			});
+			console.log(param);
 	}
  
-  $scope.userName = "";
-  $scope.password = "";
-  $scope.showNotification = false;
+  	$scope.userName = "";
+  	$scope.password = "";
+  	$scope.showNotification = false;
+	$scope.showAlertFlag = false;  
 
-  	$scope.showAlertFlag = false;  
   // Define event handler to handle login
-  $scope.handleLogin = function(event){
-  	console.log(" inside handleLogin funct: ->");
+  $scope.handleLogin = function(){
+  	console.log(" inside handleLogin funct: ->", $scope.userName , $scope.password);
 
   	if($scope.userName && $scope.password){
-
-		//$scope.callBroadCast("key", {key: "bhargav"});
-
-
-		$scope.$emit('parallel', $scope.userName);
-
-		sharingService.send("parallel", {key: "parallel"});
-  		//$rootScope.$broadcast('changeUserbc', $scope.userName);
-  		//sharingService.setData($scope.userName);
-  		//$rootScope.sessionUserName = $scope.userName;
-  		
-  		$scope.showNotification = false;  		
- 		$http({
-		  method: 'POST',
-		  url: '/api/insertWatches'
-		}).then(function successCallback(response) {
-
-			$scope.resp = response;
-		}, function errorCallback(response) {
-		    // called asynchronously if an error occurs
-		});
+		$scope.showNotification = false;  		
 		$scope.showAlertFlag = false;
+ 		
+		$http({
+			  method: 'POST',
+			  url: '/api/checkLogin/',
+			  data: {
+			  			'uname': $scope.userName.toString(), 
+			  			'pwd': $scope.password.toString()
+			  		}
+			}).then(function successCallback(response) {
+				//console.log(resposne);
+				$scope.$emit("startUserSession", response.data);
+			}, function errorCallback(response) {
+			    // called asynchronously if an error occurs
+			    //console.log("error occured");
+		    	$scope.$emit("clearSession", null);
+			});
+		
   	}else{
   		$scope.showAlertFlag = true;
 		$scope.showNotification = true;  		
@@ -59,3 +46,5 @@ watchApp.controller('loginCtrl', function PhoneListController($scope, sharingSer
   };
     
 });
+
+

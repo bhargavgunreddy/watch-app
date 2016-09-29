@@ -8,10 +8,6 @@ watchApp.controller('shoppingCtrl', function UserController($scope, $rootScope, 
   $scope.watchList = [];
   $scope.cartItems = [];
 
-  /*$rootScope.$on('changeUser', function (event, arg) { 
-    $scope.userName = 'got your ' + arg;
-    console.log("-cU->", arg);
-  });*/
 
   $scope.$on("parallel", function(event, args){
   	console.log(args, "<-keys-");

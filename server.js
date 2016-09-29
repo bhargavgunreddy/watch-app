@@ -29,12 +29,19 @@ var watchSchema = new Schema({
 },
 {strict: false});
 
+var userSchema = new Schema({
+  uname: String,
+  pwd: String
+},
+{strict: false});
+
 
 watchSchema.post('save', function (doc) {
   console.log('this fired after a document was saved');
 });
 
 var watchCollection = mongoose.model('watches', watchSchema); // watches is collection
+var userCollection = mongoose.model('user', userSchema); // users collection
 
 mongoose.connect('mongodb://localhost/watch'); // watch is db
 
@@ -75,19 +82,33 @@ app.get('/api/getAllWatches', function(req, res) {
 });
 
 app.get('/api/getWatches/:wid', function(req, res) {
-	console.log("get Watch with param -->", req.params.wid);
+	  console.log("get Watch with param -->", req.params.wid);
 		var pColor = req.params.wid;
  		watchCollection.find({color: pColor}, function (err, watchList) {
-	  
 	  		if (err) { 
 	  			console.log("err -->", err); 
-				res.send(err);
-  			}
-  			console.log(res + "  response from database of that color");
-	  		res.json(watchList);
+		  		res.send(err);
+  			}else{
+          console.log(res + "  response from database of that color");
+          res.json(watchList);  
+        }
 		});
+});
 
+
+app.post('/api/checkLogin', function(req, res) {
+    console.log("login check -->", req);
+    userCollection.find( {uname: 'Adi', pwd: 'pandu'}, function (err, user) {
+       if (err) { 
+          console.log("err -->", err); 
+          res.send(err);
+        }else{
+          console.log(user);
+          res.send(user);  
+        }
     });
+});
+
 
 
 
@@ -95,12 +116,13 @@ app.get('/api/getWatches/:wid', function(req, res) {
 	console.log("insert Watches -->");
  		var newM = new watchCollection({id: 4, cost: 800, category: "women", 
  									brand: "tag", color: "red", size: "7"});
- 		newM.save( function (err) {
-	  
+ 		 newM.save( function (err, data) {
 	  		if (err) { 
 	  			console.log("err -->", err); 
-				res.send(err);
-  			}
+		  		res.send(err);
+  			}else{
+          res.send(data);
+        }
 	  	});
 
     });
@@ -112,4 +134,6 @@ app.get('/home/*', function(req, res) {
         res.sendFile(__dirname + '/views/index.html'); // path must be absolute
     });
 
-app.listen(8008);
+app.listen(8008, function(err, data){
+  console.log("data", data, err);
+});

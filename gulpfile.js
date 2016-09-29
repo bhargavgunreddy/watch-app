@@ -7,7 +7,7 @@ var jslint = require('gulp-jslint-simple');
 var browserify = require('gulp-browserify');
  
 // Basic usage 
-gulp.task('modify', function() {
+gulp.task('modify', ['concatTask'] ,function() {
 	// Single entry point to browserify 
 	gulp.src('./dist/*.js')
 		.pipe(browserify({
@@ -36,6 +36,9 @@ gulp.task('concatTask', function() {
     .pipe(concat('all.js'))
     .pipe(gulp.dest('./dist/'));
 });
+
+gulp.task('default', ['modify']);
+
 
 /*gulp.task('jslintTask', function () {
     return gulp.src(['./js/*.js'])
